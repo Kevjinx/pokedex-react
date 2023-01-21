@@ -16,18 +16,20 @@ const fetchData = async (pokemon) => {
 const parseData = async (pokemon) => {
 	const data = await fetchData(pokemon)
 	const abilities = data.abilities.reduce(ability => ability.ability.name)
-
 	const statsObj = {}
 	for(let i = 0; i < data.stats.length; i++) {
 		statsObj[data.stats[i].stat.name] = data.stats[i].base_stat
 	}
-
+	const imgUrl = data.sprites.other.home.front_default
+	const type = data.types.map(type => type.type.name)
 	// const statsObj = data.stats.reduce((obj, stat) => {
 	// 	obj[stat.stat.name] = stat.base_stat
 	// 	return obj
 	// })
 	const {id, name, base_experience, height, weight} = data
 	const result =  {
+		type,
+		imgUrl,
 		id,
 		name,
 		baseExp: base_experience,
@@ -44,22 +46,22 @@ const getPokemonData = async (name) => {
 	return data
 }
 
-// const data = await fetchData('pikachu')
-// const testData = await getPokemonData('pikachu')
-// console.log(data)
+const data = await fetchData('pikachu')
+const testData = await getPokemonData('pikachu')
+console.log(data)
 
-// //create a json file from the result of fetchdata('pikachu)
+//create a json file from the result of fetchdata('pikachu)
 
-// fs.writeFile('pikachu.json', JSON.stringify(data), (err) => {
-// 	if (err) throw err;
-// 	console.log('The file has been saved!');
-// })
+fs.writeFile('pikachu.json', JSON.stringify(data), (err) => {
+	if (err) throw err;
+	console.log('The file has been saved!');
+})
 
 
-// fs.writeFile('pikachuData.json', JSON.stringify(testData), (err) => {
-// 	if (err) throw err;
-// 	console.log('The file has been saved!');
-// })
+fs.writeFile('pikachuData.json', JSON.stringify(testData), (err) => {
+	if (err) throw err;
+	console.log('The file has been saved!');
+})
 
 
 export default getPokemonData

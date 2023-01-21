@@ -1,10 +1,9 @@
 import fetch from "node-fetch";
 
-class PokemonUtils {
+class GetPokemon {
 	constructor(name) {
 		this.name = name.toLowerCase(); //api url is case sensitive
 		this.data = {}
-		this.parseData()
 	}
 
 	stringCap = string => string.charAt(0).toUpperCase() + string.slice(1)
@@ -20,32 +19,23 @@ class PokemonUtils {
 
 	async parseData () {
 		const data = await this.fetchData(this.name)
-		const abilities = data.abilities.map(ability => ability.ability.name)
-		const {id, name, base_experience, height, weight} = data
-		const stats = data.stats.map(stat => {
-			return {
-				[stat.stat.name]: stat.base_stat
-			}
+		const abilities = data.abilities.reduce(ability => ability.ability.name)
+		const statsObj = data.stats.reduce((obj, stat) => {
+			obj[stat.stat.name] = stat.base_stat
+			return obj
 		})
-
+		const {id, name, base_experience, height, weight} = data
 		this.data = {
 			id,
-			name: this.stringCap(name),
-			baseExperience: base_experience,
+			name,
+			baseExp: base_experience,
 			height,
 			weight,
-			abilities: this.arrayCap(abilities),
-			stats,
+			abilities,
+			statsObj
 		}
 	}
-
 }
 
-const pokemonUtils = new PokemonUtils('pikachu')
 
-const test = async () => {
-	await pokemonUtils.parseData()
-	console.log(pokemonUtils.data)
-}
-
-test()
+export default GetPokemon

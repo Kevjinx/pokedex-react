@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import fs from "fs";
 
 
 const stringCap = string => string.charAt(0).toUpperCase() + string.slice(1)
@@ -46,22 +45,22 @@ const getPokemonData = async (name) => {
 	return data
 }
 
-const data = await fetchData('pikachu')
-const testData = await getPokemonData('pikachu')
-console.log(data)
+// const data = await fetchData('pikachu')
+// const testData = await getPokemonData('pikachu')
+// console.log(data)
 
-//create a json file from the result of fetchdata('pikachu)
+// //create a json file from the result of fetchdata('pikachu)
 
-fs.writeFile('pikachu.json', JSON.stringify(data), (err) => {
-	if (err) throw err;
-	console.log('The file has been saved!');
-})
+// fs.writeFile('pikachu.json', JSON.stringify(data), (err) => {
+// 	if (err) throw err;
+// 	console.log('The file has been saved!');
+// })
 
 
-fs.writeFile('pikachuData.json', JSON.stringify(testData), (err) => {
-	if (err) throw err;
-	console.log('The file has been saved!');
-})
+// fs.writeFile('pikachuData.json', JSON.stringify(testData), (err) => {
+// 	if (err) throw err;
+// 	console.log('The file has been saved!');
+// })
 
 
 export default getPokemonData

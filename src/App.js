@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import NavBar from './components/navBar';
-import Card from './components/card';
+import Cards from './components/cards';
 class App extends Component{
 
 
@@ -9,9 +9,8 @@ class App extends Component{
   render() {
     return (
       <React.Fragment>
-        <h1>test</h1>
         <NavBar />
-        <Card />
+        <Cards />
       </React.Fragment>
     );
   }

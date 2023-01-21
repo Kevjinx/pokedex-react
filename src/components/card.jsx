@@ -1,35 +1,37 @@
 import React, {Component} from "react";
 import Type from "./type.jsx";
+import getPokemonData from "../data/getPokemonData.mjs";
+
+
 class Card extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			pokemon: {}
+		}
+	}
 
+	async componentDidMount() {
+		const pokemon = await getPokemonData(this.props.pokemon)
+		this.setState({pokemon})
+	}
 
-	state = {
-		pokemon: {
-			type: ["electric", "test"],
-			imgUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/25.png",
-			id: 25,
-			name: "pikachu",
-			baseExp: 112,
-			height: 4,
-			weight: 60,
-			abilities: "static",
-			statsObj: {
-					hp: 35,
-					attack: 55,
-					defense: 40,
-					"special-attack": 50,
-					"special-defense": 50,
-					speed: 90
-			}
-	}	}
+	createTypes = () => this.state.pokemon.type.map(type => <Type key={type} type={type}/>)
 
 	render() {
+		if (!this.state.pokemon.type) {
+			return null;
+		}
 		return (
-			<div className="card">
-				<img src={this.state.pokemon.imgUrl} alt="test"/>
-				<p>n {this.state.pokemon.id}</p>
+			<div className="container-sm card">
+				<div className="img-container">
+					<img className="img-thumbnail rounded pokemon-img"src={this.state.pokemon.imgUrl} alt="test"/>
+				</div>
+				<div>
+					<span>n {this.state.pokemon.id}</span>
+					{this.createTypes()}
+				</div>
 				<h2>{this.state.pokemon.name}</h2>
-				<Type type={this.state.pokemon.type[0]}/>
 			</div>
 		);
 	}

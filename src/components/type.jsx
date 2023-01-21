@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 class Type extends Component {
 
-	hexCode = (types) => {
+	hexCode = (type) => {
 		const colors = {
 			//type and its color hex code
 			normal: "A8A77A",
@@ -24,7 +24,7 @@ class Type extends Component {
 			steel: "B7B7CE",
 			fairy: "D685AD",
 		}
-		return colors[types]
+		return colors[type]
 	}
 
 
@@ -33,7 +33,7 @@ class Type extends Component {
 		return (
 			<div
 				style={{backgroundColor: `#${this.hexCode(this.props.type)}`}}
-				className="type"
+				className="btn btn-sm m-2 type"
 			>
 				<p>{this.props.type}</p>
 			</div>

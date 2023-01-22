@@ -9,10 +9,7 @@ class StatBar extends Component {
 				<div
 					className="progress-bar"
 					role="progressbar"
-					style={{width: this.props.statValue + "%"}}
-					aria-valuenow="40"
-					aria-valuemin="0"
-					aria-valuemax="100">
+					style={{width: this.props.statValue + "%"}}>
 				</div>
 			</td>
 		);

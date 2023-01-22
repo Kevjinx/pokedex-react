@@ -3,33 +3,37 @@ import Card from "./card.jsx";
 
 class Cards extends Component {
 
-	testPokemons = [
-		'bulbasaur',  'ivysaur',
-		'venusaur',   'charmander',
-		'charmeleon', 'charizard',
-		'squirtle',   'wartortle',
-		'blastoise',  'caterpie'
-	]
+testPokemons = [
+	'bulbasaur',  'ivysaur',
+	'venusaur',   'charmander',
+	'charmeleon', 'charizard',
+	'squirtle',   'wartortle',
+	'blastoise',  'caterpie'
+]
 
 
-	createCards = () => {
-		this.testPokemons.map(pokemon => {
-			return <Card key={this.testPokemons.indexOf(pokemon)}pokemon={pokemon}/>
-		})
-	}
+// how come createCards() when called in render() returns undefined?
 
-	render() {
+createCards = () => {
+	return this.testPokemons.map(pokemon => {
 		return (
-			<div className="cards-container">
-				<Card key="1" pokemon='bulbasaur'/>
-				<Card key="2" pokemon='venusaur'/>
-				<Card key="3" pokemon='charmeleon'/>
-				<Card key="4" pokemon='squirtle'/>
-				<Card key="5" pokemon='blastoise'/>
-				<Card key="6" pokemon='ivysaur'/>
+			<div className="col-sm-4" key={this.testPokemons.indexOf(pokemon)}>
+				<Card pokemon={pokemon}/>
 			</div>
-		);
-	}
+		)
+	})
+}
+
+
+render() {
+	return (
+		<div className="container">
+			<div className="row">
+				{this.createCards()}
+			</div>
+		</div>
+	);
+}
 }
 
 export default Cards

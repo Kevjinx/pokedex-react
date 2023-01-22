@@ -19,6 +19,7 @@ class Card extends Component {
 	createTypes = () => this.state.pokemon.type.map(type => <Type key={type} type={type}/>)
 
 	render() {
+		//workaround for when state is not set when the component is rendered
 		if (!this.state.pokemon.type) {
 			return null;
 		}

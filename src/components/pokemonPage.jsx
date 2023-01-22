@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Stats from "./stats.jsx";
+import PokemonData from "./pokemonData.jsx";
 
 class PokemonPage extends Component {
 
@@ -28,6 +29,7 @@ class PokemonPage extends Component {
 		return (
 			<div>
 				<Stats statsObj={this.testData["statsObj"]}/>
+				<PokemonData pokemonData={this.testData}/>
 			</div>
 		);
 	}

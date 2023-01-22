@@ -1,7 +1,7 @@
 {
   "name": "pokemon-react",
   "version": "0.1.0",
-  "homepage": "https://github.com/Kevjinx/pokedex-react",
+  "homepage": "https://kevjinx.github.io/pokedex-react",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

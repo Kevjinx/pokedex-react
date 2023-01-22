@@ -27,7 +27,7 @@ createCards = () => {
 
 render() {
 	return (
-		<div className="container">
+		<div className="pokemon-container container border">
 			<div className="row">
 				{this.createCards()}
 			</div>

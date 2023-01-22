@@ -16,7 +16,15 @@ class Card extends Component {
 		this.setState({pokemon})
 	}
 
-	createTypes = () => this.state.pokemon.type.map(type => <Type key={type} type={type}/>)
+	createTypes = () => {
+		return (
+			this.state.pokemon.type.map(type => {
+				return (
+					<Type key={type} type={type}/>
+				)
+			})
+		)
+	}
 
 	render() {
 		//workaround for when state is not set when the component is rendered
@@ -28,11 +36,23 @@ class Card extends Component {
 				<div className="img-container">
 					<img className="img-thumbnail rounded pokemon-img"src={this.state.pokemon.imgUrl} alt="test"/>
 				</div>
-				<div>
-					<span>n {this.state.pokemon.id}</span>
-					{this.createTypes()}
+				<div className="container border">
+					<div className="row">
+						<div className="col">
+							<p>n {this.state.pokemon.id}</p>
+							<h4>{this.state.pokemon.name}</h4>
+						</div>
+
+						<div className="row">
+							{this.createTypes()}
+						</div>
+
+					</div>
+
 				</div>
-				<h2>{this.state.pokemon.name}</h2>
+
+				<div>
+				</div>
 			</div>
 		);
 	}

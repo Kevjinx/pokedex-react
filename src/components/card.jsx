@@ -36,22 +36,17 @@ class Card extends Component {
 				<div className="img-container">
 					<img className="img-thumbnail rounded pokemon-img"src={this.state.pokemon.imgUrl} alt="test"/>
 				</div>
-				<div className="container border">
+				<div className="container-fluid border">
 					<div className="row">
 						<div className="col">
 							<p>n {this.state.pokemon.id}</p>
 							<h4>{this.state.pokemon.name}</h4>
 						</div>
 
-						<div className="row">
+						<div className="col">
 							{this.createTypes()}
 						</div>
-
 					</div>
-
-				</div>
-
-				<div>
 				</div>
 			</div>
 		);

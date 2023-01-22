@@ -8,9 +8,9 @@ class Stat extends Component {
 
 	render() {
 		return (
-			<tr className="stat-bar">
-				<th className="">{this.props.statName}</th>
-				<td id="sp-attack-data">{this.props.statValue}</td>
+			<tr className="stat">
+				<th className="stat-name">{this.props.statName}</th>
+				<td className="stat-value">{this.props.statValue}</td>
 				<StatBar statValue={this.props.statValue}/>
 			</tr>
 		);

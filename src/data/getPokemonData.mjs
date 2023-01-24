@@ -37,14 +37,12 @@ const parseData = async (pokemon) => {
 		abilities,
 		statsObj
 	}
-	console.log('result: ', result);
 	return result
 }
 
 //can be the name or the id of the pokemon
 const getPokemonData = async (name) => {
 	const data = await parseData(name)
-	console.log('data: ', data)
 	return data
 }
 

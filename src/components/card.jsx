@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import Type from "./type.jsx";
 import getPokemonData from "../data/getPokemonData.mjs";
-
-
+import { Link } from "react-router-dom";
 class Card extends Component {
 	constructor(props) {
 		super(props);
@@ -10,6 +9,7 @@ class Card extends Component {
 			pokemon: {}
 		}
 	}
+
 
 	async componentDidMount() {
 		const pokemon = await getPokemonData(this.props.pokemon)
@@ -34,7 +34,9 @@ class Card extends Component {
 		return (
 			<div className="container-sm card">
 				<div className="img-container">
-					<img className="img-thumbnail rounded pokemon-img"src={this.state.pokemon.imgUrl} alt="test"/>
+					<Link to={`/pokemon/${this.state.pokemon.id}`}>
+						<img className="img-thumbnail rounded pokemon-img"src={this.state.pokemon.imgUrl} alt="test"/>
+					</Link>
 				</div>
 				<div className="container-fluid border">
 					<div className="row">

@@ -1,43 +1,41 @@
-import React, {Component} from "react";
+import React, { useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 import Stats from "./stats.jsx";
 import PokemonData from "./pokemonData.jsx";
 import getPokemonData from "../data/getPokemonData.mjs";
 
-class PokemonPage extends Component {
 
-	//takes in single pokemon data object, passes part of the data to children components
 
-	pokemonData = getPokemonData()
 
-	testData = {
-		"type": [
-			"electric"
-		],
-		"imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/25.png",
-		"id": 25,
-		"name": "pikachu",
-		"baseExp": 112,
-		"height": 4,
-		"weight": 60,
-		"abilities": "static",
-		"statsObj": {
-			"hp": 35,
-			"attack": 55,
-			"defense": 40,
-			"special-attack": 50,
-			"special-defense": 50,
-			"speed": 90
-		}
-	}
+const PokemonPage = props => {
 
-	render() {
-		return (
-			<div>
-				<Stats statsObj={this.testData["statsObj"]}/>
-				<PokemonData pokemonData={this.testData}/>
-			</div>
-		);
-	}
+	const { pokemonId }	= useParams();
+	const [pokemon, setPokemon] = useState({});
+	const [pokemonLoaded, setPokemonLoaded] = useState(false);
+
+	useEffect(() => {
+		(async () => {
+			setPokemonLoaded(false);
+			let data = await getPokemonData(pokemonId);
+			setPokemon(data);
+			setPokemonLoaded(true);
+		})();
+	},[pokemonId]);
+
+
+	return (
+		<div>
+			{pokemonLoaded ? (
+				<div>
+					<PokemonData pokemonData={pokemon}/>
+					<Stats statsObj={pokemon.statsObj}/>
+				</div>
+			) : (
+				<p>No pokemon found, please try again</p>
+			)}
+		</div>
+	);
+
 }
 
 export default PokemonPage

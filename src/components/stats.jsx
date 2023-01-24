@@ -9,6 +9,7 @@ class Stats extends Component {
 		for (const stat in statObj) {
 			const statComponent = (
 				<Stat
+				key={stat}
 				statName={stat}
 				statValue={statObj[stat]}
 				/>

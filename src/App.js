@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import './App.css';
+import { Routes, Route } from "react-router-dom"
 import NavBar from './components/navBar';
 import Cards from './components/cards';
 import SearchBox from './components/searchBox';
 import PokemonPage from './components/pokemonPage';
+
 class App extends Component{
 
 
@@ -13,8 +14,10 @@ class App extends Component{
       <React.Fragment>
         <NavBar />
         <SearchBox />
-        <Cards />
-        <PokemonPage />
+        <Routes>
+          <Route path="/" element={<Cards />} />
+          <Route path="/pokemon/:pokemonId" element={<PokemonPage />} />
+        </Routes>
       </React.Fragment>
     );
   }

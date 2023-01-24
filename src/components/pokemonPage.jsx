@@ -1,8 +1,13 @@
 import React, {Component} from "react";
 import Stats from "./stats.jsx";
 import PokemonData from "./pokemonData.jsx";
+import getPokemonData from "../data/getPokemonData.mjs";
 
 class PokemonPage extends Component {
+
+	//takes in single pokemon data object, passes part of the data to children components
+
+	pokemonData = getPokemonData()
 
 	testData = {
 		"type": [

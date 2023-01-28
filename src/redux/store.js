@@ -1,6 +1,8 @@
-import reducer from './reducer'
-import { createStore } from 'redux'
+import { configureStore } from '@reduxjs/toolkit';
+import teamReducer from './teamSlice';
 
-const store = createStore(reducer)
-
-export default store
+export const store = configureStore({
+  reducer: {
+    team: teamReducer,
+  },
+});

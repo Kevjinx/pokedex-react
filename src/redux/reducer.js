@@ -1,5 +1,6 @@
-const { produce } = require('immer');
-const actions = require('./actionTypes');
+import { produce } from 'immer';
+import * as actions from './actionTypes';
+
 
 const addToTeam = (state, action) => {
 	return produce(state, draftState => {
@@ -8,18 +9,21 @@ const addToTeam = (state, action) => {
 }
 
 const removeFromTeam = (state, action) => {
-	state.filter(id => id !== action.payload.pokemonID);
+	const index = state.indexOf(action.payload.pokemonID);
+	return produce(state, draftState => {
+		draftState.splice(index, 1);
+	})
 }
 
 const reducer = (state = [], action) => {
 	switch (action.type) {
-		case actions.ADD_TO_TEAM:
+		case actions.ADD_POKEMON_TO_TEAM:
 			return addToTeam(state, action);
-		case actions.REMOVE_FROM_TEAM:
+		case actions.REMOVE_POKEMON_FROM_TEAM:
 			return removeFromTeam(state, action);
 		default:
 			return state;
 	}
 }
 
-module.exports = reducer;
+export default reducer

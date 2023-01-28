@@ -6,12 +6,15 @@ const teamSlice = createSlice({
 	name: 'team',
 	initialState,
 	reducers: {
-		addToTeam(state, action){
+		addToTeam: (state, action) => {
 			console.log(action)
-			state.lineup.push(action.payload.pokemonID);
+			state.lineup.push(action.payload);
 		},
-		removePokemonFromTeam(state, action) {
-			const index = state.lineup.indexOf(action.payload.pokemonID);
+		removePokemonFromTeam: (state, action) => {
+			console.log(state)
+			console.log(action)
+
+			const index = state.lineup.indexOf(action.payload);
 			state.lineup.splice(index, 1);
 		}
 	}

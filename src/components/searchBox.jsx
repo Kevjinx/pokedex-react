@@ -14,9 +14,7 @@ const SearchBox = () => {
 
 	const handleChange = (e) => setSearchValue(e.target.value);
 	const handleSubmit = (e) => {
-		if (e.key === 'Enter') {
-			navigate(`/pokemon/${searchValue}`);
-		}
+		if (e.key === 'Enter') navigate(`/pokemon/${searchValue}`)
 	}
 	const navigate = useNavigate();
 

@@ -2,6 +2,10 @@ import React, {Component} from "react";
 import Type from "./type.jsx";
 import getPokemonData from "../data/getPokemonData.mjs";
 import { Link } from "react-router-dom";
+
+
+
+//should refactor this to a functional component
 class Card extends Component {
 	constructor(props) {
 		super(props);

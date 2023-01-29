@@ -10,7 +10,7 @@ import PokemonPage from './components/pokemonPage';
 import UserID from './components/dataTutorial';
 import SideBar from './components/sideBar';
 
-import Team from './redux/team';
+import Team from './components/team';
 
 
 class App extends Component{
@@ -25,11 +25,11 @@ class App extends Component{
             </Col>
             <Col xs={10}>
               <SearchBox />
+              < Team />
               <Routes>
                 <Route path="/" element={<Cards />} />
                 <Route path="/user" element={<UserID />} />
                 <Route path="/pokemon/:pokemonId" element={<PokemonPage />} />
-                <Route path="/team" element={<Team />} />
               </Routes>
             </Col>
           </Row>

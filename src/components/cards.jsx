@@ -1,39 +1,33 @@
-import React, {Component} from "react";
+import React, { useState } from "react";
 import Card from "./card.jsx";
 
-class Cards extends Component {
+const Cards = () => {
 
-testPokemons = [
-	'bulbasaur',  'ivysaur',
-	'venusaur',   'charmander',
-	'charmeleon', 'charizard',
-	'squirtle',   'wartortle',
-	'blastoise',  'caterpie'
-]
+	const testPokemons = [
+		'bulbasaur', 'ivysaur',
+		'venusaur', 'charmander',
+		'charmeleon', 'charizard',
+		'squirtle', 'wartortle',
+		'blastoise', 'caterpie'
+	]
 
+	const createCards = () => {
+		return testPokemons.map(pokemon => {
+			return (
+				<div className="col-sm-4" key={testPokemons.indexOf(pokemon)}>
+					<Card pokemon={pokemon} />
+				</div>
+			)
+		})
+	}
 
-// how come createCards() when called in render() returns undefined?
-
-createCards = () => {
-	return this.testPokemons.map(pokemon => {
-		return (
-			<div className="col-sm-4" key={this.testPokemons.indexOf(pokemon)}>
-				<Card pokemon={pokemon}/>
-			</div>
-		)
-	})
-}
-
-
-render() {
 	return (
 		<div className="pokemon-container container border">
 			<div className="row">
-				{this.createCards()}
+				{createCards()}
 			</div>
 		</div>
 	);
 }
-}
 
-export default Cards
+export default Cards;
